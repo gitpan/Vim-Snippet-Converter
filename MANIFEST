@@ -1,0 +1,16 @@
+Changes
+MANIFEST
+META.yml # Will be created by "make dist"
+Makefile.PL
+README
+lib/Vim/Snippet/Converter.pm
+t/00-load.t
+t/01-simple.t
+t/boilerplate.t
+t/pod.t
+
+snippets/perl_snippets.vim
+snippets/perl.snt
+snippets/php_snippets.vim
+snippets/php.snt
+
