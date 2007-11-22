@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Vim-Snippet-Converter
-version:             0.01
+version:             0.02
 abstract:            A Converter for Slippery Snippet Vim Plugin
 license:             ~
 generated_by:        ExtUtils::MakeMaker version 6.36

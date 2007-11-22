@@ -14,7 +14,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -188,7 +188,17 @@ You can find documentation for this module with the perldoc command.
 
 You can also look for information at:
 
-=over 4
+=over 6
+
+=item * Vim
+
+L<http://www.vim.org/>
+
+=item * Slippery Snippets Vim Plugin
+
+L<http://slipperysnippets.blogspot.com/2006/12/howto-try-out-latest-version-of.html>
+
+L<http://c9s.blogspot.com/2007/06/vim-snippet.html>
 
 =item * RT: CPAN's request tracker
 
