@@ -6,15 +6,15 @@ use File::Copy 'copy';
 
 =head1 NAME
 
-Vim::Snippet::Converter - A Converter for Slippery Snippet Vim Plugin
+Vim::Snippet::Converter - A Template Converter for Slippery Snippet Vim Plugin
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -46,6 +46,27 @@ that will save perl_snippets.vim to the target directory.
 to save triggers into completion file:
 
     $ scc -s perl.snt -c vim_completion
+
+=head1 Setup your vim completion dictionary
+
+append the below setting to your .vimrc , it is located in your home directory.
+
+    set dictionary+=/path/to/file
+
+when you want to call the keyword completion , just press Ctrl-X Ctrl-K in Insert-Mode.
+
+=head1 Template Format
+
+    ;sub
+    sub <<function>> ( <<prototype>> ) {
+        my <<>> = <<>>;
+        return <<returnValue>>;
+    }
+    ;end
+
+'sub' is a trigger name , when you press <Tab> , the trigger will be replaced with the below template.
+
+<<function>> is called Place Holder , when you press <Tab> again , curosr will jump to the next position to let you enter some text.
 
 =cut
 
