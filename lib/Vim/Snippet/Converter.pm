@@ -10,33 +10,42 @@ Vim::Snippet::Converter - A Converter for Slippery Snippet Vim Plugin
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
+    #!perl
     use Vim::Snippet::Converter;
 
     my $vsc = Vim::Snippet::Converter->new();
     open my $in , "<" , "perl.snt";
     open my $out , ">" , "perl_snippets.vim";
-
     $vsc->convert( $in , $out );
-
-    close $in;
-    close $out;
+    close ($in , $out);
 
 =head1 Command-Line Usage
 
-    scc [filename]
+convert template file (*.snt)
 
-    # for example
+    $ scc -s [filename]  [-t {path}] [-c {path}]
 
-    $ scc perl.snt
+for example: 
 
+    $ scc -s perl.snt
+
+that will generate perl_snippets.vim in the same directory.
+
+    $ scc -s perl.snt -t ~/.vim/after/ftplugin/
+
+that will save perl_snippets.vim to the target directory.
+
+to save triggers into completion file:
+
+    $ scc -s perl.snt -c vim_completion
 
 =cut
 
@@ -52,28 +61,6 @@ sub convert {
     print "Done\n";
 }
 
-
-sub install {
-    my $self = shift;
-    my $fn = shift;
-    my $target_dir = shift || $ENV{HOME} . "/.vim/after/ftplugin/";
-
-    print "Install to $target_dir\n";
-    # mkdir $target_dir;
-    mkpath $target_dir;
-    my $target_fn = $fn;
-    $target_fn =~ s{\.snt$}{_snippets.vim};
-    $target_fn =~ s{/(.*?)$}{$1};
-    copy( $fn , $target_dir . $target_fn );
-
-    print <<END;
-    ---------
-    Use these settings to beautify your snippet:
-        let g:snip_start_tag = "«"
-        let g:snip_end_tag = "»"
-END
-
-}
 
 sub _gen_trigger {
     my $self = shift;
@@ -103,6 +90,10 @@ sub _gen_snippet {
 
 sub parse {
     my ( $self , $in , $out ) = @_;
+
+    my @trigger_names = ( );
+    $self->{triggers} = \@trigger_names;
+
 	print $out $self->gen_header();
     while (<$in>) { 
         # print $out snippet_gen( $1) 
@@ -110,6 +101,7 @@ sub parse {
             # read snippet template
             
             print "Add trigger: $snippet_name\n";
+            push @{ $self->{triggers} } , $snippet_name;
             my $code_buffer = '';
 
             R_SNIPPET:

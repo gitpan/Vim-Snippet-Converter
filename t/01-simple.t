@@ -1,6 +1,6 @@
 #!perl -T
 
-use Test::More tests => 3;
+use Test::More tests => 4;
 
 BEGIN {
 	use_ok( 'Vim::Snippet::Converter' );
@@ -25,11 +25,12 @@ open my $in , "<" , \$content;
 open my $out , ">" , \$output;
 
 my $scc = new Vim::Snippet::Converter;
+
+ok( $scc );
+
 $scc->convert( $in , $out );
 
 like( $output , qr{exec "Snippet dt use DateTime;<CR>".st.et."<CR>"} );
 like( $output , qr{exec "Snippet dp use Data::Dumper::Simple;<CR>"\.st\.et\."<CR>"} );
 
 close($in,$out);
-
-
