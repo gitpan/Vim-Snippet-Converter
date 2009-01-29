@@ -1,0 +1,85 @@
+;newaction
+my <<model>> = Jifty->web->new_action( 
+    class   => <<model_class>>,
+    moniker => <<moniker>>,
+    arguments =>  { <<args>> },
+);
+<<>>
+;end
+
+;reqaction
+my <<>> = Jifty->web->request->add_action(
+    class => <<action_class>>,
+    moniker => <<moniker>>,
+    arguments => { <<args>> },
+);
+<<>>
+;end
+
+;reqresult
+my <<>> = Jifty->web->request->result(<<>>);
+<<>>
+;end
+
+;red
+Jifty->web->_redirect( <<>> );
+<<>>
+;end
+
+;on
+on <<>> => run {
+  <<>>
+};
+;end
+
+;bef
+before <<>>  => run {
+  <<>>
+};
+;end
+
+
+;model
+my <<>> = <<>>::Model::<<>>->new( <<>> );
+<<>>
+;end
+
+;prm
+param <<>> =>
+  type is <<>>,
+  <<>>;
+
+<<>>
+;end
+
+;col
+column <<>> =>
+  type is <<>>,
+  <<>>;
+
+<<>>
+;end
+
+
+;dp
+use Data::Dumper::Simple;
+warn Dumper( <<data>> );
+;end
+
+
+;tplp
+template '<<name>>' => page { <<>> }
+content {
+    <<>>
+
+};
+;end
+
+
+;tpl
+template '<<name>>' => sub {
+    <<>>
+};
+;end
+
+

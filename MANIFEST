@@ -9,8 +9,7 @@ t/01-simple.t
 t/02-completion.t
 t/boilerplate.t
 t/pod.t
-snippets/perl_snippets.vim
 snippets/perl.snt
-snippets/php_snippets.vim
+snippets/jifty.snt 
 snippets/php.snt
 META.yml                                 Module meta-data (added by MakeMaker)

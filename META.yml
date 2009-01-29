@@ -1,16 +1,16 @@
 --- #YAML:1.0
 name:                Vim-Snippet-Converter
-version:             0.04
+version:             0.05
 abstract:            A Template Converter for Slippery Snippet Vim Plugin
 license:             ~
-generated_by:        ExtUtils::MakeMaker version 6.36
+author:              
+    - Cornelius <c9s@aiink.com>
+generated_by:        ExtUtils::MakeMaker version 6.42
 distribution_type:   module
 requires:     
     File::Copy:                    0
     File::Path:                    0
     Test::More:                    0
 meta-spec:
-    url:     http://module-build.sourceforge.net/META-spec-v1.2.html
-    version: 1.2
-author:
-    - Cornelius <c9s@aiink.com>
+    url:     http://module-build.sourceforge.net/META-spec-v1.3.html
+    version: 1.3

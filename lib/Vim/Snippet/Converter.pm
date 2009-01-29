@@ -10,11 +10,11 @@ Vim::Snippet::Converter - A Template Converter for Slippery Snippet Vim Plugin
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -27,23 +27,33 @@ our $VERSION = '0.04';
     $vsc->convert( $in , $out );
     close ($in , $out);
 
-=head1 Command-Line Usage
+=head1 Script
 
 convert template file (*.snt)
 
-    $ scc -s [filename]  [-t {path}] [-c {path}]
+    $ scc -s [filename]  [-i {path}] [-c {path}]
 
 for example: 
 
+    # generate snippet vim script to stdout
     $ scc -s perl.snt
 
-that will generate perl_snippets.vim in the same directory.
+    $ scc -s filename.snt > perl_snippets.vim
+    
 
-    $ scc -s perl.snt -t ~/.vim/after/ftplugin/
+    # to replace the previous install automatically.
+    $ scc -s filename.snt -i ~/.vim/syntax/perl.vim
 
-that will save perl_snippets.vim to the target directory.
+    -s, --src  [filename]
+        specify source file path
 
-to save triggers into completion file:
+    -i, --install-to [filename]
+        specify vim script path, e.g.  ~/.vim/syntax/perl.vim
+
+    -c, --create-completion [filepath]
+        create snippet keyword completion file for vim
+
+to save triggers into vim completion file:
 
     $ scc -s perl.snt -c vim_completion
 
@@ -51,7 +61,7 @@ to save triggers into completion file:
 
 append the below setting to your .vimrc , it is located in your home directory.
 
-    set dictionary+=/path/to/file
+    set dictionary+=/path/to/vim_completion
 
 when you want to call the keyword completion , just press Ctrl-X Ctrl-K in Insert-Mode.
 
@@ -64,7 +74,7 @@ when you want to call the keyword completion , just press Ctrl-X Ctrl-K in Inser
     }
     ;end
 
-'sub' is a trigger name , when you press <Tab> , the trigger will be replaced with the below template.
+'sub' is a trigger name , when you press <Tab> , the trigger will be replaced with the template.
 
 <<function>> is called Place Holder , when you press <Tab> again , curosr will jump to the next position to let you enter some text.
 
@@ -79,7 +89,6 @@ sub new {
 sub convert {
     my ( $self , $in , $out ) = @_;
     $self->parse( $in , $out );
-    print "Done\n";
 }
 
 
@@ -121,7 +130,7 @@ sub parse {
         if ( my ( $snippet_name ) = ( $_ =~ m/^;(\w+?)$/ ) ) {
             # read snippet template
             
-            print "Add trigger: $snippet_name\n";
+            # print STDERR "Add trigger: $snippet_name\n";
             push @{ $self->{triggers} } , $snippet_name;
             my $code_buffer = '';
 
@@ -153,30 +162,6 @@ let st = g:snip_start_tag
 let et = g:snip_end_tag
 let cd = g:snip_elem_delim
 
-" Functions {{{
-function! Count(haystack, needle)
-    let counter = 0
-    let index = match(a:haystack, a:needle)
-    while index > -1
-        let counter = counter + 1
-        let index = match(a:haystack, a:needle, index+1)
-    endwhile
-    return counter
-endfunction
-
-"function! ArgList(count)
-"    " This returns a list of empty tags to be used as 
-"    " argument list placeholders for the call to printf
-"    let st = g:snip_start_tag
-"    let et = g:snip_end_tag
-"    if a:count == 0
-"        return ""
-"    else
-"        return repeat(', '.st.et, a:count)
-"    endif
-"endfunction
-"
-" }}}
 EOF
 
 }

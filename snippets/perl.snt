@@ -49,7 +49,7 @@ use Data::Dumper::Simple;<<>>
 ;end
 
 ;dp
-warn Dumper( <<>> );<<>>
+warn Dumper( <<>> );
 ;end
 
 ;udt
@@ -57,11 +57,11 @@ use DateTime;<<>>
 ;end
 
 ;dt
-my <<var>> = DateTime-><<method>>( <<parameters>> );<<>>
+my <<var>> = DateTime-><<method>>( <<parameters>> );
 ;end
 
 ;dtnew
-my <<var>> = DateTime->new( <<parameters>> );<<>>
+my <<var>> = DateTime->new( <<parameters>> );
 ;end
 
 ;dtnow
@@ -82,7 +82,7 @@ sub new {
 ;end
 
 ;o
-open( <<file_handler>> , "<<operator>>", <<filename>> ) 
+open( <<filehandler>> , "<<operator>>", <<filename>> ) 
 	or die "Cannot open <<filename>> - $!";
 ;end
 
@@ -156,4 +156,3 @@ return <<>> if ( <<>> );
 ;nextif
 next if ( <<>> );
 ;end
-
