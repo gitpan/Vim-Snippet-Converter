@@ -1,9 +1,9 @@
 Vim-Snippet-Converter
 
-Vim-Snippet-Converter module is for slippery snippet plugin, it's a vim plugin
-which generates template from vim script. but it's hard to read and write.
+Vim-Snippet-Converter module is for slippery snippet, which is a vim plugin.
+slippery snippet generates template from script. but the code is hard to modify.
 
-this module could convert the readable template into the slippery snippet script.
+This module could convert templates into vim script for slippery snippet.
 so you can easily write your own template.
 
 INSTALLATION
@@ -18,10 +18,12 @@ To install this module, run the following commands:
 USAGE
 
     # generate perl_snippet.vim ..
-    $ scc perl.snt
+    $ scc -s perl.snt
 
-    # generate perl_snippet.vim and install it into ~/.vim/after/ folder
-    $ scc -i perl.snt
+    $ scc -s perl.snt -i install/to/somewhere.vim
+
+    # install perl.snt for perl
+    $ scc -s perl.snt -i ~/.vim/after/ftplugin/perl_snippets.vim
 
 SUPPORT AND DOCUMENTATION
 
