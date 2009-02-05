@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Vim-Snippet-Converter
-version:             0.071
+version:             0.072
 abstract:            A Template Converter for Slippery Snippet Vim Plugin
 license:             ~
 author:              

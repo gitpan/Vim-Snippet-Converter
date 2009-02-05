@@ -10,11 +10,11 @@ Vim::Snippet::Converter - A Template Converter for Slippery Snippet Vim Plugin
 
 =head1 VERSION
 
-Version 0.07
+Version 0.072
 
 =cut
 
-our $VERSION = '0.071';
+our $VERSION = '0.072';
 
 =head1 SYNOPSIS
 
@@ -27,7 +27,14 @@ our $VERSION = '0.071';
     $vsc->convert( $in , $out );
     close ($in , $out);
 
-=head1 Script
+=head1 DESCRIPTION
+
+This module provides template conversion for Vim SnippetEmu Plugin (
+L<http://www.vim.org/scripts/script.php?script_id=1318> )
+
+You can write your template simply. see L</"TEMPLATE FORMAT">
+
+=head1 SCRIPT
 
 convert template file (*.snt)
 
@@ -57,15 +64,19 @@ to save triggers into vim completion file:
 
     $ scc -s perl.snt -c vim_completion
 
-=head1 Setup your vim completion dictionary
+=head1 VIM COMPLETION DICTIONARY
+
+save triggers into vim completion file:
+
+    $ scc -s perl.snt -c vim_completion
 
 append the below setting to your .vimrc , it is located in your home directory.
 
     set dictionary+=/path/to/vim_completion
 
-when you want to call the keyword completion , just press Ctrl-X Ctrl-K in Insert-Mode.
+when you want to call the keyword completion , just press C<Ctrl-X Ctrl-K> in Insert-Mode.
 
-=head1 Template Format
+=head1 TEMPLATE FORMAT
 
     ;sub
     sub <<function>> ( <<prototype>> ) {
