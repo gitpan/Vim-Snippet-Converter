@@ -1,3 +1,18 @@
+use inc::Module::Install;
+# Define metadata
+name 'Vim-Snippet-Converter';
+author 'Yo-An Lin <cornelius.howl {at} gmail.com>';
+all_from 'lib/Vim/Snippet/Converter.pm';
+license 'perl';
+
+# Specific dependencies
+requires 'Test::More' => 0;
+requires 'File::Path' => 0;
+requires 'File::Copy' => 0;
+install_script 'bin/scc';
+WriteAll;
+
+__END__
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
