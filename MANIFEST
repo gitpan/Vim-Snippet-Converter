@@ -12,3 +12,7 @@ t/01-simple.t
 t/02-completion.t
 t/boilerplate.t
 t/pod.t
+snippets/jifty.snt
+snippets/perl_m.snt
+snippets/pod.snt
+snippets/php.snt
